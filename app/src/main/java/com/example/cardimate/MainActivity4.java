@@ -1,0 +1,164 @@
+package com.example.cardimate;    //insert record
+
+import static com.example.cardimate.MainActivity3.e;
+import static java.sql.Types.NULL;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.Intent;
+import android.media.AudioMetadata;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Locale;
+
+public class MainActivity4 extends AppCompatActivity {
+
+    EditText systolic_pressure,diastolic_pressure,heart_rate,comment,date,time;
+    private Button back_btn,save_btn;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main4);
+
+        systolic_pressure=findViewById(R.id.sp);
+        diastolic_pressure= findViewById(R.id.dp);
+        heart_rate=findViewById(R.id.hr);
+        comment= findViewById(R.id.c);
+        date=findViewById(R.id.d);
+        time=findViewById(R.id.t);
+        save_btn=findViewById(R.id.btn_6);
+
+        time.setOnClickListener(v->select_time());
+
+        Calendar calendar=Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener dp=new DatePickerDialog.OnDateSetListener() { //setting calender
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day_of_month) {
+                calendar.set(Calendar.YEAR,year);
+                calendar.set(Calendar.MONTH,month);
+                calendar.set(Calendar.DAY_OF_MONTH,day_of_month);
+                updatecalender();
+
+            }
+
+            public void updatecalender(){
+                String format="dd/MM/YYYY";
+                SimpleDateFormat sdf=new SimpleDateFormat(format, Locale.US);
+                date.setText(sdf.format(calendar.getTime()));
+
+            }
+        };
+
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(MainActivity4.this, dp, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        back_btn=findViewById(R.id.btn_5);
+        user=firebaseAuth.getCurrentUser();
+
+        back_btn.setOnClickListener(new View.OnClickListener() { //back to interface acitvity
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity4.this,Interface.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = firebaseUser.getUid();
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
+
+
+        save_btn.setOnClickListener(new View.OnClickListener() { //insert data to firebase for different user and then back to interface activity
+            @Override
+            public void onClick(View view) {
+
+                final String sp=systolic_pressure.getText().toString();
+                final String dp=diastolic_pressure.getText().toString();
+                final String hr=heart_rate.getText().toString();
+                final String d=date.getText().toString();
+                final String t=time.getText().toString();
+                final String c=comment.getText().toString();
+
+                if(sp.isEmpty() || dp.isEmpty() || hr.isEmpty() || d.isEmpty() || t.isEmpty() || c.isEmpty()){
+                    Toast.makeText(MainActivity4.this,"Please  Fill  All The Required Fields",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(MainActivity4.this,"Record Is Saved",Toast.LENGTH_SHORT).show();
+
+                    HashMap<String,Object> m=new HashMap<String,Object>();
+                    m.put("Systolic Pressure",sp);
+                    m.put("Diastolic Pressure",dp);
+                    m.put("Heart Rate",hr);
+                    m.put("Date of Measurement",d);
+                    m.put("Time Of Measurement",t);
+
+                    if(!c.isEmpty()){
+                        m.put("Comment",c);
+                    }
+                   databaseRef.child(userId).push().setValue(m);
+                    Intent intent=new Intent(MainActivity4.this,Interface.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+
+
+
+
+
+    }
+
+    public void select_time(){ //time setting
+        Calendar currenttime=Calendar.getInstance();
+        int hour=currenttime.get(Calendar.HOUR_OF_DAY);
+        int minute=currenttime.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog;
+        timePickerDialog=new TimePickerDialog(MainActivity4.this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int h, int m) {
+                currenttime.set(Calendar.HOUR_OF_DAY,h);
+                currenttime.set(Calendar.MINUTE,m);
+
+                String myformat="HH:mm";
+                SimpleDateFormat simpleDateFormat=new SimpleDateFormat(myformat,Locale.US);
+                time.setText(simpleDateFormat.format(currenttime.getTime()));
+
+            }
+        },hour,minute,true);
+        timePickerDialog.setTitle("Select Time");
+        timePickerDialog.show();
+    }
+}

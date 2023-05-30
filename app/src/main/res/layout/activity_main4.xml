@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wallpaper"
+    tools:context=".MainActivity4">
+
+    <TextView
+
+        android:id="@+id/create_record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:gravity="center"
+        android:text="Create Record"
+        android:textColor="#C6A287"
+        android:textSize="35dp"
+        android:textStyle="bold" />
+
+
+
+    <EditText
+        android:id="@+id/sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_record"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_border"
+        android:drawablePadding="20dp"
+        android:hint="Systolic Pressure (mm-hg) (Required)"
+        android:inputType="numberDecimal"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#A89B9B" />
+
+    <EditText
+        android:id="@+id/dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_border"
+        android:drawablePadding="20dp"
+        android:hint="Diastolic Pressure (mm-hg) (Required)"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#A89B9B" />
+
+    <EditText
+        android:id="@+id/hr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_border"
+        android:drawablePadding="20dp"
+        android:hint="Heart Rate (bits/min) (Required)"
+        android:inputType="numberDecimal"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#A89B9B" />
+
+    <EditText
+        android:id="@+id/t"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hr"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_border"
+        android:drawablePadding="20dp"
+        android:hint="Time Of Measurement (hh:mm) (Required)"
+        android:drawableRight="@drawable/baseline_access_time_24"
+        android:inputType="time"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#A89B9B"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
+
+    <EditText
+        android:id="@+id/d"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/t"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_border"
+        android:drawablePadding="20dp"
+        android:hint="Date Of Measurement (dd-mm-yyyy) (Required)"
+        android:inputType="date"
+        android:minHeight="48dp"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#A89B9B"
+        android:drawableRight="@drawable/baseline_date_range_24"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        />
+
+
+    <EditText
+        android:id="@+id/c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/d"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_border"
+        android:drawablePadding="20dp"
+        android:hint="Comment (Optional)"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#A89B9B" />
+
+    <Button
+        android:id="@+id/btn_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/c"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Save The Record" />
+
+    <Button
+        android:id="@+id/btn_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="11dp"
+
+        android:text="Back" />
+
+
+</RelativeLayout>
