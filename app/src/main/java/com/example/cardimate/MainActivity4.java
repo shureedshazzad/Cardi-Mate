@@ -1,14 +1,10 @@
 package com.example.cardimate;    //insert record
 
-import static com.example.cardimate.MainActivity3.e;
-import static java.sql.Types.NULL;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.media.AudioMetadata;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +27,7 @@ public class MainActivity4 extends AppCompatActivity {
 
     EditText systolic_pressure,diastolic_pressure,heart_rate,comment,date,time;
     private Button back_btn,save_btn;
+    static int i= 0;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
@@ -97,7 +94,8 @@ public class MainActivity4 extends AppCompatActivity {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String userId = firebaseUser.getUid();
-        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Cards");
+        String data =databaseRef.push().getKey();
 
 
         save_btn.setOnClickListener(new View.OnClickListener() { //insert data to firebase for different user and then back to interface activity
@@ -118,16 +116,17 @@ public class MainActivity4 extends AppCompatActivity {
                     Toast.makeText(MainActivity4.this,"Record Is Saved",Toast.LENGTH_SHORT).show();
 
                     HashMap<String,Object> m=new HashMap<String,Object>();
-                    m.put("Systolic Pressure",sp);
-                    m.put("Diastolic Pressure",dp);
-                    m.put("Heart Rate",hr);
-                    m.put("Date of Measurement",d);
-                    m.put("Time Of Measurement",t);
+                    m.put("systolicPressure",sp);
+                    m.put("diastolicPressure",dp);
+                    m.put("heartRate",hr);
+                    m.put("date",d);
+                    m.put("time",t);
 
                     if(!c.isEmpty()){
-                        m.put("Comment",c);
+                        m.put("comment",c);
                     }
-                   databaseRef.child(userId).push().setValue(m);
+                   databaseRef.child(userId).child(data).setValue(m);
+                    i++;
                     Intent intent=new Intent(MainActivity4.this,Interface.class);
                     startActivity(intent);
                     finish();

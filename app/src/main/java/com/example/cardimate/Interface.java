@@ -28,7 +28,16 @@ public class Interface extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(Interface.this,MainActivity4.class);
                 startActivity(intent);
-                finish();;
+                //finish();;
+            }
+        });
+
+        show_record_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Interface.this,MainActivity5.class);
+                startActivity(intent);
+                //finish();
             }
         });
 
