@@ -1,4 +1,4 @@
-package com.example.cardimate;
+package com.example.cardimate;  //RECYCLER VIEW to show the fetched data
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.widget.TextView;
 
 import com.example.cardimate.Class.CardModelAdapter;
 import com.example.cardimate.Class.Cardmodel;
@@ -34,6 +35,7 @@ public class MainActivity5 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main5);
 
+
         recyclerView = findViewById(R.id.main_recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity5.this);
@@ -47,17 +49,19 @@ public class MainActivity5 extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Cards");
 
+
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity5.this);
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);
         AlertDialog dialog = builder.create();
 
-        databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //list.clear();
                 for (DataSnapshot itemsnapshot : snapshot.getChildren()) {
                     Cardmodel cardmodel = itemsnapshot.getValue(Cardmodel.class);
+                    cardmodel.setKey(itemsnapshot.getKey());
                     list.add(cardmodel);
                 }
                 adapter.notifyDataSetChanged(); // Notify the adapter of the data change

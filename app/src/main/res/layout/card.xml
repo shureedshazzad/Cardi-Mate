@@ -37,9 +37,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:contentDescription=""
+                android:background="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_outline_date_range_24" />
+                android:src="@drawable/baseline_date_range_24"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -60,7 +61,7 @@
             android:layout_width="124dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
-            android:background="@color/black"
+            android:background="@color/orange"
             app:layout_constraintBottom_toBottomOf="@+id/r_r_v_i_calender_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/r_r_v_i_calender_background">
@@ -175,45 +176,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/r_r_v_i_heart_rate_title">
+            app:layout_constraintTop_toBottomOf="@+id/r_r_v_i_heart_rate_title"/>
 
-            <LinearLayout
-                android:layout_width="24dp"
-                android:layout_height="2dp"
-                android:orientation="horizontal" />
-            <Button
-                android:id="@+id/r_r_v_i_edit_button"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="24dp"
-                android:layout_weight="0.7"
-                android:backgroundTint="#F9B36D"
-                android:fontFamily="@font/poppins_medium"
-                android:paddingBottom="10sp"
-                android:drawableBottom="@drawable/ic_outline_edit_24"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            <LinearLayout
-                android:layout_width="24dp"
-                android:layout_height="2dp"
-                android:orientation="horizontal" />
-
-            <Button
-                android:id="@+id/r_r_v_i_delete_button"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_weight="0.7"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="#FF6565"
-                android:fontFamily="@font/poppins_medium"
-                android:drawableBottom="@drawable/ic_outline_delete_outline_24"
-                android:paddingBottom="10sp"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-        </LinearLayout>
 
         <TextView
             android:id="@+id/r_r_v_i_timestamp"
@@ -227,10 +191,10 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.699"
+            app:layout_constraintHorizontal_bias="0.69"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.255" />
+            app:layout_constraintVertical_bias="0.387" />
 
         <TextView
             android:id="@+id/r_r_v_i_timestampdata"
@@ -243,10 +207,10 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.854"
+            app:layout_constraintHorizontal_bias="0.857"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.324" />
+            app:layout_constraintVertical_bias="0.469" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

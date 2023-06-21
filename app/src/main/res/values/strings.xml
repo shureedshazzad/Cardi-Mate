@@ -42,4 +42,6 @@
     <string name="delete_this_record">Delete this record?</string>
     <string name="cancel">Cancel</string>
     <string name="confirm">Confirm</string>
+    <string name="update">Update</string>
+    <string name="update_record">Update Record</string>
 </resources>

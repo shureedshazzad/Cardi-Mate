@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wallpaper"
+    android:background="@drawable/tp227_06"
     tools:context=".MainActivity4">
 
     <TextView
@@ -12,7 +12,10 @@
         android:id="@+id/create_record"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="Create Record"
         android:textColor="#C6A287"
@@ -142,20 +145,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/c"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:text="Save The Record" />
 
-    <Button
-        android:id="@+id/btn_5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_margin="11dp"
-
-        android:text="Back" />
 
 
 </RelativeLayout>

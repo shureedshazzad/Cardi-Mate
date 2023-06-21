@@ -1,12 +1,27 @@
 package com.example.cardimate.Class;
 
-public class Cardmodel {
+import com.example.cardimate.R;
+
+import java.io.Serializable;
+
+public class Cardmodel implements Serializable {
     private String date;
     private String diastolicPressure;
     private String heartRate;
     private String systolicPressure;
     private String time;
     private String comment;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    private String key;
+
 
     // Constructor
     public Cardmodel()
@@ -71,4 +86,24 @@ public class Cardmodel {
     public void setTime(String time) {
         this.time = time;
     }
+
+    public String getFormattedSys(){
+        return systolicPressure+" mmHg";
+    }
+    public String getFormattedDys(){
+        return diastolicPressure+" mmHg";
+    }
+    public String getFormattedHeartRate(){
+        return heartRate+" bpm";
+    }
+
+    public int getBackColor(){
+        if(comment.equalsIgnoreCase("high") || comment.equalsIgnoreCase("low")){
+            return R.color.red;
+        }
+        else{
+            return R.color.orange;
+        }
+    }
+
 }

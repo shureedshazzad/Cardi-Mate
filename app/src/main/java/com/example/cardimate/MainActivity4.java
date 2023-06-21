@@ -6,13 +6,16 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.TextKeyListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.cardimate.Class.Cardmodel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -26,19 +29,19 @@ import java.util.Locale;
 public class MainActivity4 extends AppCompatActivity {
 
     EditText systolic_pressure,diastolic_pressure,heart_rate,comment,date,time;
-    private Button back_btn,save_btn;
-    static int i= 0;
+    private Button save_btn;
+
 
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
+    private String key = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
+
 
         systolic_pressure=findViewById(R.id.sp);
         diastolic_pressure= findViewById(R.id.dp);
@@ -47,6 +50,26 @@ public class MainActivity4 extends AppCompatActivity {
         date=findViewById(R.id.d);
         time=findViewById(R.id.t);
         save_btn=findViewById(R.id.btn_6);
+
+
+
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle != null){
+            Cardmodel cardmodel = (Cardmodel) bundle.getSerializable("model");
+            systolic_pressure.setText(cardmodel.getSystolicPressure());
+            diastolic_pressure.setText(cardmodel.getDiastolicPressure());
+            heart_rate.setText(cardmodel.getHeartRate());
+            comment.setText(cardmodel.getComment());
+            date.setText(cardmodel.getDate());
+            time.setText(cardmodel.getTime());
+            key = cardmodel.getKey();
+
+            save_btn.setText(R.string.update);
+
+            TextView tv = findViewById(R.id.create_record);
+            tv.setText(R.string.update_record);
+        }
 
         time.setOnClickListener(v->select_time());
 
@@ -79,24 +102,23 @@ public class MainActivity4 extends AppCompatActivity {
 
 
         firebaseAuth=FirebaseAuth.getInstance();
-        back_btn=findViewById(R.id.btn_5);
         user=firebaseAuth.getCurrentUser();
 
-        back_btn.setOnClickListener(new View.OnClickListener() { //back to interface acitvity
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivity4.this,Interface.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        back_btn.setOnClickListener(new View.OnClickListener() { //back to interface acitvity
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(MainActivity4.this,Interface.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String userId = firebaseUser.getUid();
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Cards");
-        String data =databaseRef.push().getKey();
 
+        String data = (key == null) ? databaseRef.push().getKey() : key;
 
         save_btn.setOnClickListener(new View.OnClickListener() { //insert data to firebase for different user and then back to interface activity
             @Override
@@ -126,7 +148,7 @@ public class MainActivity4 extends AppCompatActivity {
                         m.put("comment",c);
                     }
                    databaseRef.child(userId).child(data).setValue(m);
-                    i++;
+
                     Intent intent=new Intent(MainActivity4.this,Interface.class);
                     startActivity(intent);
                     finish();

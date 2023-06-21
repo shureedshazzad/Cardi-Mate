@@ -1,6 +1,7 @@
 package com.example.cardimate.Class;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cardimate.MainActivity6;
 import com.example.cardimate.R;
 
 import java.util.ArrayList;
@@ -43,6 +46,20 @@ public class CardModelAdapter extends RecyclerView.Adapter<CardModelAdapter.Card
         holder.statusDataTextView.setText(cardModel.getComment());
         holder.TimeDataTextView.setText(cardModel.getTime());
 
+        //holder.clStatus.setBackgroundColor(cardModel.getBackColor());
+        holder.clStatus.setBackgroundColor(context.getResources().getColor(cardModel.getBackColor()));
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, MainActivity6.class);
+                intent.putExtra("model",cardModelList.get(holder.getAdapterPosition()));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+
+            }
+        });
+
         // Set click listeners or any other logic for buttons (edit and delete)
 
     }
@@ -61,17 +78,18 @@ public class CardModelAdapter extends RecyclerView.Adapter<CardModelAdapter.Card
         private TextView TimeDataTextView;
         private CardView cardView;
         Button editButton,deleteButton;
+        private ConstraintLayout clStatus;
 
         public CardModelViewHolder(@NonNull View itemView) {
             super(itemView);
+            clStatus = itemView.findViewById(R.id.r_r_v_i_status_background);
             dateMeasuredTextView = itemView.findViewById(R.id.r_r_v_i_dateMeasured);
             systolicDataTextView = itemView.findViewById(R.id.r_r_v_i_systolic_data);
             diastolicDataTextView = itemView.findViewById(R.id.r_r_v_i_diastolic_data);
             heartRateDataTextView = itemView.findViewById(R.id.r_r_v_i_heart_rate_data);
             statusDataTextView = itemView.findViewById(R.id.r_r_v_i_status_data);
             TimeDataTextView=itemView.findViewById(R.id.r_r_v_i_timestampdata);
-            editButton = itemView.findViewById(R.id.r_r_v_i_edit_button);
-            deleteButton = itemView.findViewById(R.id.r_r_v_i_delete_button);
+
             cardView = itemView.findViewById(R.id.reccard);
         }
     }
