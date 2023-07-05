@@ -1,12 +1,12 @@
 package com.example.cardimate;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -32,7 +32,7 @@ public class Interface extends AppCompatActivity {
             }
         });
 
-        show_record_btn.setOnClickListener(new View.OnClickListener() {
+        show_record_btn.setOnClickListener(new View.OnClickListener() {//this buttom will move to mainactivity 5
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(Interface.this,MainActivity5.class);

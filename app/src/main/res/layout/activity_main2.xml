@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity2Layout"
     tools:context=".MainActivity2">
 
     <TextView
@@ -74,7 +75,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:text="New User? Sign Up"
-       />
+        />
     <ProgressBar
         android:id="@+id/p1"
         android:layout_width="wrap_content"

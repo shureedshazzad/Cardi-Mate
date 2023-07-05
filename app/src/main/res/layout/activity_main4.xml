@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/tp227_06"
-    tools:context=".MainActivity4">
+    android:id="@+id/activity4Layout"
+    android:padding="16dp">
+
+
 
     <TextView
 
@@ -13,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
         android:gravity="center"
@@ -22,24 +25,23 @@
         android:textSize="35dp"
         android:textStyle="bold" />
 
-
-
     <EditText
         android:id="@+id/sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/create_record"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="9dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/background_border"
         android:drawablePadding="20dp"
-        android:hint="Systolic Pressure (mm-hg) (Required)"
-        android:inputType="numberDecimal"
+        android:hint="Systolic Pressure"
+        android:inputType="text"
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="#A89B9B" />
+
 
     <EditText
         android:id="@+id/dp"
@@ -52,12 +54,13 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/background_border"
         android:drawablePadding="20dp"
-        android:hint="Diastolic Pressure (mm-hg) (Required)"
-        android:inputType="numberDecimal"
+        android:hint="Diastolic Pressure"
+        android:inputType="text"
         android:minHeight="48dp"
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="#A89B9B" />
+
 
     <EditText
         android:id="@+id/hr"
@@ -70,11 +73,13 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/background_border"
         android:drawablePadding="20dp"
-        android:hint="Heart Rate (bits/min) (Required)"
-        android:inputType="numberDecimal"
+        android:hint="Heart Rate"
+        android:inputType="text"
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="#A89B9B" />
+
+
 
     <EditText
         android:id="@+id/t"
@@ -87,15 +92,12 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/background_border"
         android:drawablePadding="20dp"
-        android:hint="Time Of Measurement (hh:mm) (Required)"
+        android:hint="Time Of Measurement"
         android:drawableRight="@drawable/baseline_access_time_24"
-        android:inputType="time"
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="#A89B9B"
-        android:clickable="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"/>
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/d"
@@ -108,16 +110,13 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/background_border"
         android:drawablePadding="20dp"
-        android:hint="Date Of Measurement (dd-mm-yyyy) (Required)"
-        android:inputType="date"
+        android:hint="Date Of Measurement"
         android:minHeight="48dp"
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="#A89B9B"
         android:drawableRight="@drawable/baseline_date_range_24"
-        android:clickable="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
+        android:inputType="text"
         />
 
 
@@ -132,7 +131,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/background_border"
         android:drawablePadding="20dp"
-        android:hint="Comment (Optional)"
+        android:hint="Comment"
         android:inputType="text"
         android:minHeight="48dp"
         android:padding="20dp"
@@ -145,12 +144,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/c"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:layout_marginRight="50dp"
+        android:backgroundTintMode="screen"
         android:text="Save The Record" />
 
 
 
-</RelativeLayout>
+
+
+
+</LinearLayout>
