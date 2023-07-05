@@ -18,6 +18,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
+/**
+ * This Activity Inserts Data which will be stored in the firebae
+ */
 public class MainActivity4 extends AppCompatActivity {
 
     EditText systolic_pressure,diastolic_pressure,heart_rate,comment,time,date;
@@ -27,6 +30,11 @@ public class MainActivity4 extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
     private String key = null;
+
+    /**
+     * This is the oncreate method
+     * @param savedInstanceState   bunch of arguments
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -62,7 +70,39 @@ public class MainActivity4 extends AppCompatActivity {
             TextView tv = findViewById(R.id.create_record);
             tv.setText(R.string.update_record);
         }
+        /**
+         * User users timepicker to select time the widget
+         */
+        time.setOnClickListener(v->select_time());
 
+        Calendar calendar=Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener dp=new DatePickerDialog.OnDateSetListener() { //setting calender
+
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day_of_month) {
+                calendar.set(Calendar.YEAR,year);
+                calendar.set(Calendar.MONTH,month);
+                calendar.set(Calendar.DAY_OF_MONTH,day_of_month);
+                updatecalender();
+
+            }
+
+
+
+            public void updatecalender(){
+                String format="dd/MM/YYYY";
+                SimpleDateFormat sdf=new SimpleDateFormat(format, Locale.US);
+                date.setText(sdf.format(calendar.getTime()));
+
+            }
+        };
+
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(MainActivity4.this, dp, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
 
 
@@ -84,7 +124,9 @@ public class MainActivity4 extends AppCompatActivity {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Cards");
 
         String data = (key == null) ? databaseRef.push().getKey() : key;
-
+        /**
+         * Clicking on this button, the inserted data will be saved to the firebase
+         */
         save_btn.setOnClickListener(new View.OnClickListener() { //insert data to firebase for different user and then back to interface activity
             @Override
             public void onClick(View view) {

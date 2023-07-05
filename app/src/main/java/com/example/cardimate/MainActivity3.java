@@ -20,6 +20,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * This activity allows unregisted user to register to the app
+ */
 public class MainActivity3 extends AppCompatActivity {
 
     private Button sign_in_page_button,sign_up_button;
@@ -29,7 +32,9 @@ public class MainActivity3 extends AppCompatActivity {
 
     public static String e;
 
-
+    /**
+     * This is onstart method
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -42,7 +47,10 @@ public class MainActivity3 extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * this is the oncreate method
+     * @param savedInstanceState  Bunch of arguments
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +63,9 @@ public class MainActivity3 extends AppCompatActivity {
         sign_up_button=findViewById(R.id.btn_3);
         progressBar2=findViewById(R.id.p2);
 
+        /**
+         * Clicking on this button , new user will be registerd
+         */
         sign_up_button.setOnClickListener(new View.OnClickListener() {    //new user will sign up using email and password
             @Override
             public void onClick(View view) {
@@ -87,7 +98,9 @@ public class MainActivity3 extends AppCompatActivity {
 
             }
         });
-
+        /**
+         * User will click on this button if his account already exists
+         */
         sign_in_page_button.setOnClickListener(new View.OnClickListener() {// if already account exits the go to activity 2 to sign in
             @Override
             public void onClick(View view) {

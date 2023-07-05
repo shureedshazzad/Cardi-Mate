@@ -17,12 +17,18 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * This is the Login and Registration Activity
+ */
 public class MainActivity2 extends AppCompatActivity {
     private Button sign_up_page_button;
     private Button sign_in_button;
     ProgressBar progressBar1;
     FirebaseAuth firebaseAuth;
 
+    /**
+     * This is the onstart method
+     */
     @Override
     public void onStart() {      //if user is already signed in then directly move to activity interface
         super.onStart();
@@ -36,7 +42,10 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
 
-
+    /**
+     * This is the oncreate method
+     * @param savedInstanceState Bunch of Instances
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +58,9 @@ public class MainActivity2 extends AppCompatActivity {
         progressBar1=findViewById(R.id.p1);
         firebaseAuth=FirebaseAuth.getInstance();
 
+        /**
+         * This method sends user to mainActivity3 for registration
+         */
         sign_up_page_button.setOnClickListener(new View.OnClickListener() {      //new user will go to activity 3 to sign up
             @Override
             public void onClick(View view) {
@@ -58,6 +70,9 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        /**
+         * This method starts a login verification process (email and password)
+         */
         sign_in_button.setOnClickListener(new View.OnClickListener() {       //user will sign in using email and password and go to activity interface
             @Override
             public void onClick(View view) {

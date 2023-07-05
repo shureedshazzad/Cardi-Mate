@@ -5,8 +5,14 @@ import static org.junit.Assert.assertEquals;
 
 import com.example.cardimate.R;
 
+/**
+ * This is java class for Unit Testing
+ */
 public class CardmodelTest {
 
+    /**
+     * This method checks whether the inserted systolic pressure will add "mmhg" after it as unit
+     */
     @Test
     public void testGetFormattedSys() {
         Cardmodel cardmodel = new Cardmodel();
@@ -15,6 +21,9 @@ public class CardmodelTest {
         assertEquals("120 mmHg", formattedSys);
     }
 
+    /**
+     * This method checks whether the inserted diastolic pressure will add "mmhg" after it as unit
+     */
     @Test
     public void testGetFormattedDys() {
         Cardmodel cardmodel = new Cardmodel();
@@ -23,6 +32,9 @@ public class CardmodelTest {
         assertEquals("80 mmHg", formattedDys);
     }
 
+    /**
+     * This method checks whether the inserted systolic pressure will add "bpm" after it as unit
+     */
     @Test
     public void testGetFormattedHeartRate() {
         Cardmodel cardmodel = new Cardmodel();
@@ -31,6 +43,9 @@ public class CardmodelTest {
         assertEquals("70 bpm", formattedHeartRate);
     }
 
+    /**
+     * This method checks whether the inserted comment will return red color
+     */
     @Test
     public void testGetBackColorWithHighComment() {
         Cardmodel cardmodel = new Cardmodel();
@@ -39,6 +54,10 @@ public class CardmodelTest {
         assertEquals(R.color.red, backColor);
     }
 
+
+    /**
+     * This method checks whether the inserted comment will return red color
+     */
     @Test
     public void testGetBackColorWithLowComment() {
         Cardmodel cardmodel = new Cardmodel();
@@ -47,6 +66,10 @@ public class CardmodelTest {
         assertEquals(R.color.red, backColor);
     }
 
+
+    /**
+     * This method checks whether the inserted comment will return orange color
+     */
     @Test
     public void testGetBackColorWithOtherComment() {
 

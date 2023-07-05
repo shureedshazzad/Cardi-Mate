@@ -18,6 +18,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * This the activity where the Inserted data, that is stored in the firebase, will be shown using recycler view
+ * Each set of data will be situated in a Card , which is a predesigned layout
+ */
 public class MainActivity5 extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Cardmodel> list;
@@ -25,6 +29,10 @@ public class MainActivity5 extends AppCompatActivity {
     ValueEventListener eventListener;
     CardModelAdapter adapter; // Declare the adapter as a class member
 
+    /**
+     * This is the oncreate method
+     * @param savedInstanceState bunch of arguments
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +51,16 @@ public class MainActivity5 extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("Cards");
 
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity5.this);
+        builder.setCancelable(false);
+        builder.setView(R.layout.progress_layout);
+        AlertDialog dialog = builder.create();
 
         databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            /**
+             * This method here fetches data from firebase by matching Uid
+             * @param snapshot  the instance of fetched data from firebase
+             */
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //list.clear();
@@ -58,6 +74,9 @@ public class MainActivity5 extends AppCompatActivity {
             }
 
             @Override
+            /**
+             * Handles error if needed
+             */
             public void onCancelled(@NonNull DatabaseError error) {
                 // Handle the error if needed
 
