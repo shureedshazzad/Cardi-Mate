@@ -18,11 +18,18 @@ import com.example.cardimate.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Adapter class for the CardModel RecyclerView.
+ * Handles binding data to the views and defining click listeners for each item.
+ */
 public class CardModelAdapter extends RecyclerView.Adapter<CardModelAdapter.CardModelViewHolder> {
     private Context context;
     private ArrayList<Cardmodel> cardModelList;
-
+    /**
+     * Constructor for the CardModelAdapter class.
+     * @param context The context of the calling activity or fragment.
+     * @param cardModelList The list of Cardmodel objects to be displayed in the RecyclerView.
+     */
     public CardModelAdapter(Context context, ArrayList<Cardmodel> cardModelList) {
         this.context = context;
         this.cardModelList = cardModelList;
@@ -39,6 +46,7 @@ public class CardModelAdapter extends RecyclerView.Adapter<CardModelAdapter.Card
     public void onBindViewHolder(@NonNull CardModelViewHolder holder, int position) {
         Cardmodel cardModel = cardModelList.get(position);
 
+        // Bind data to the views
         holder.dateMeasuredTextView.setText(cardModel.getDate());
         holder.systolicDataTextView.setText(cardModel.getSystolicPressure()+" mmHg");
         holder.diastolicDataTextView.setText(cardModel.getDiastolicPressure()+" mmHg");

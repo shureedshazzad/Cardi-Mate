@@ -11,6 +11,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * This is the Splashscreen
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static int splash_screen=5000;
@@ -18,7 +21,10 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView;
     TextView textView;
 
-
+    /**
+     *This is oncreate method
+     * @param savedInstanceState Bundle of arguments
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         imageView.setAnimation(top_animation);
         textView.setAnimation(top_animation);
 
+
+        /**
+         * This method loads a splash screen and then heads to the login/registration i.e MainActivity2
+         */
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

@@ -1,4 +1,4 @@
-package com.example.cardimate;
+package com.example.cardimate;// Data Update and Delete
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+/**
+ * This activity contains details , and update and delete option
+ */
 
 public class MainActivity6 extends AppCompatActivity {
     TextView sys,dia,date,comment,time,heart_rate;

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.example.cardimate"},{"l":"com.example.cardimate.Class"}]
